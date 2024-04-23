@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="300" prefWidth="400" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.crud.MainController">
+
+    <children>
+        <VBox alignment="CENTER" spacing="15" AnchorPane.bottomAnchor="50" AnchorPane.leftAnchor="50" AnchorPane.rightAnchor="50" AnchorPane.topAnchor="50">
+            <children>
+            <Label style="-fx-font-size: 32; -fx-font-weight: bold;" text="BookTracker" />
+                <Label style="-fx-font-size: 18; -fx-font-weight: bold;" text="Sign Up" />
+
+                <!-- Name and Email Row -->
+                <HBox alignment="CENTER" spacing="10">
+                    <VBox>
+                        <Label text="Name:" />
+                        <TextField fx:id="nameSignupField" promptText="Enter your name" />
+                    </VBox>
+                    <VBox>
+                        <Label text="Email:" />
+                        <TextField fx:id="emailSignupField" promptText="Enter your email" />
+                    </VBox>
+                </HBox>
+
+                <!-- Username and Password Row -->
+                <HBox alignment="CENTER" spacing="10">
+                    <VBox>
+                        <Label text="Username:" />
+                        <TextField fx:id="usernameSignupField" promptText="Enter your username" />
+                    </VBox>
+                    <VBox>
+                        <Label text="Password:" />
+                        <PasswordField fx:id="passwordSignupField" promptText="Enter your password" />
+                    </VBox>
+                </HBox>
+
+                <!-- Sign Up and Back to Login Buttons Row -->
+                <HBox alignment="CENTER" spacing="10">
+                    <Button onAction="#onSignupClick" fx:id="signUpButton" minWidth="100" style="-fx-background-color: #007ACC; -fx-text-fill: white;" text="Sign Up" />
+                    <Button onAction="#onLoginRedirectClick" fx:id="backToLoginButton" minWidth="100" style="-fx-background-color: #E0E0E0; -fx-text-fill: black;" text="Back to Login" />
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
