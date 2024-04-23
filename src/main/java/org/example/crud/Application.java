@@ -14,6 +14,7 @@ public class Application extends javafx.application.Application {
         Scene scene = new Scene(fxmlLoader.load(), 420, 340);
         stage.setTitle("Fynn's BookTracker!");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 

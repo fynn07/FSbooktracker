@@ -35,6 +35,15 @@ public class MainController{
     @FXML
     private TextField passwordLoginField;
 
+    //MAIN PAGE REDIRECT
+    @FXML
+    protected void executeMainPageRedirect(ActionEvent event) throws Exception{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("main_page.fxml"));
+
+        Scene newScene = new Scene(loader.load());
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(newScene);
+    }
 
     //LOGIN PAGE CONTROLLERS
     @FXML
@@ -44,6 +53,25 @@ public class MainController{
         Scene newScene = new Scene(loader.load());
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(newScene);
+
+    }
+
+    @FXML
+    protected void onLoginClick(ActionEvent event){
+        String USERNAME = usernameLoginField.getText();
+        String PASSWORD = passwordLoginField.getText();
+
+        if(connection.loginAccount(USERNAME, PASSWORD)){
+            System.out.println("Login Successful");
+            try {
+                executeMainPageRedirect(event);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+        else{
+            System.out.println("Account not Found");
+        }
     }
 
 

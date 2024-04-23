@@ -83,11 +83,7 @@ public class MainConnection {
 
                 ResultSet res = statement.executeQuery();
 
-                if (res.next()) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return res.next();
 
             }catch (SQLException e){
                 e.printStackTrace();

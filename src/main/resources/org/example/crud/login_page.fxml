@@ -21,7 +21,7 @@
                 <Label text="Password:" />
                 <PasswordField fx:id="passwordLoginField" promptText="Enter your password" />
 
-                <Button fx:id="loginButton" minWidth="100" style="-fx-background-color: #007ACC; -fx-text-fill: white;" text="Login" />
+                <Button onAction="#onLoginClick" fx:id="loginButton" minWidth="100" style="-fx-background-color: #007ACC; -fx-text-fill: white;" text="Login" />
                 <Button onAction="#onSignupRedirectClick" fx:id="signUpButtonRedirect" minWidth="100" style="-fx-background-color: #007ACC; -fx-text-fill: white;" text="Sign Up" />
             </children>
         </VBox>
