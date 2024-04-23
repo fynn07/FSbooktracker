@@ -1,10 +1,6 @@
 package org.example.crud;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
+import java.sql.*;
 
 public class MainConnection {
     //replace the db in the URL to your database
@@ -75,6 +71,30 @@ public class MainConnection {
             e.printStackTrace();
             return 3;
         }
+    }
+
+    public boolean loginAccount(String USERNAME, String PASSWORD){
+        if(connect != null){
+            try(PreparedStatement statement = connect.prepareStatement(
+                    "SELECT * FROM accounts WHERE username = ? AND password = ?"
+            )) {
+                statement.setString(1, USERNAME);
+                statement.setString(2, PASSWORD);
+
+                ResultSet res = statement.executeQuery();
+
+                if (res.next()) {
+                    return true;
+                } else {
+                    return false;
+                }
+
+            }catch (SQLException e){
+                e.printStackTrace();
+                return false;
+            }
+        }
+        return false;
     }
 
 }
