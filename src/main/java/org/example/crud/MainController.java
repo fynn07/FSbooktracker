@@ -106,7 +106,7 @@ public class MainController{
     public void deleteBook(ActionEvent event){
         Button deleteButton = (Button) event.getSource();
         HBox hbox = (HBox) deleteButton.getParent();
-        Label bookIDLabel = (Label) hbox.getChildren().getFirst(); // Assuming the bookID label is the first child
+        Label bookIDLabel = (Label) hbox.getChildren().getFirst();
         String bookID = bookIDLabel.getText();
 
         if(connection.deleteBookinDB(bookID)){
@@ -144,8 +144,6 @@ public class MainController{
             deleteButton.setId("deleteButton");
             deleteButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
 
-            // Your function implementation here
-            // For example, you can call a method to handle the delete operation
             deleteButton.setOnAction(this::deleteBook);
 
             hbox.getChildren().addAll(bookID, bookNameLabel, authorNameLabel, pageCountLabel, deleteButton);
