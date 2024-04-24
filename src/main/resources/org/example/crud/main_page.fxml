@@ -43,63 +43,23 @@
         <ScrollPane fitToWidth="true" layoutX="51.0" layoutY="184.0" prefHeight="195.0" prefWidth="498.0">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="482.0">
-                    <VBox fx:id="vbox" prefWidth="484.0" spacing="10" style="-fx-padding: 10; -fx-border-color: 'black'">
-                  <HBox alignment="CENTER" fillHeight="true" spacing="10">
-                     <children>
-                        <Label style="-fx-min-width: 220;" text="Jujutsu Kaisen" />
-                        <Label style="-fx-min-width: 100;" text="Fynn Geralt" />
-                        <Label style="-fx-min-width: 50;" text="399" />
-                        <Button fx:id="deleteButton1" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" fillHeight="true" spacing="10">
-                     <children>
-                        <Label style="-fx-min-width: 220;" text="Tomb Raider" />
-                        <Label style="-fx-min-width: 100;" text="Santa Clause" />
-                        <Label style="-fx-min-width: 50;" text="3992" />
-                        <Button fx:id="deleteButton2" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" fillHeight="true" spacing="10">
-                     <children>
-                        <Label style="-fx-min-width: 220;" text="Hogwarts Legacy" />
-                        <Label style="-fx-min-width: 100;" text="Jk Rowling" />
-                        <Label style="-fx-min-width: 50;" text="399" />
-                        <Button fx:id="deleteButton3" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" fillHeight="true" spacing="10">
-                     <children>
-                        <Label style="-fx-min-width: 220;" text="Jack in the Beanstalk" />
-                        <Label style="-fx-min-width: 100;" text="Jack Black" />
-                        <Label style="-fx-min-width: 50;" text="35673" />
-                        <Button fx:id="deleteButton4" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" fillHeight="true" spacing="10">
-                     <children>
-                        <Label style="-fx-min-width: 220;" text="Termites Invasion" />
-                        <Label style="-fx-min-width: 100;" text="Karla Mogdovic" />
-                        <Label style="-fx-min-width: 50;" text="399" />
-                        <Button fx:id="deleteButton5" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" fillHeight="true" spacing="10">
-                     <children>
-                        <Label style="-fx-min-width: 220;" text="Hogwarts Legacy of the Forbidden" />
-                        <Label style="-fx-min-width: 100;" text="Jk Rowling" />
-                        <Label style="-fx-min-width: 50;" text="399" />
-                        <Button fx:id="deleteButton6" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" fillHeight="true" spacing="10">
-                     <children>
-                        <Label style="-fx-min-width: 220;" text="Hogwarts Legacy of the Forbidden" />
-                        <Label style="-fx-min-width: 100;" text="Jk Rowling" />
-                        <Label style="-fx-min-width: 50;" text="399" />
-                        <Button fx:id="deleteButton61" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete" />
-                     </children>
-                  </HBox>
+                    <VBox fx:id="vbox" prefWidth="484.0" spacing="10" style="-fx-padding: 10;">
+                      <HBox alignment="CENTER" fillHeight="true" spacing="10">
+                         <children>
+                            <Label style="-fx-min-width: 220;" text="Jujutsu Kaisen" />
+                            <Label style="-fx-min-width: 100;" text="Fynn Geralt" />
+                            <Label style="-fx-min-width: 50;" text="399" />
+                            <Button fx:id="deleteButton1" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete" />
+                         </children>
+                      </HBox>
+                      <HBox alignment="CENTER" fillHeight="true" spacing="10">
+                         <children>
+                            <Label style="-fx-min-width: 220;" text="Tomb Raider" />
+                            <Label style="-fx-min-width: 100;" text="Santa Clause" />
+                            <Label style="-fx-min-width: 50;" text="3992" />
+                            <Button fx:id="deleteButton2" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete" />
+                         </children>
+                      </HBox>
                         <!-- Add more HBox rows as necessary -->
                     </VBox>
                 </AnchorPane>

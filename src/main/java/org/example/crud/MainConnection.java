@@ -9,7 +9,7 @@ public class MainConnection {
     public static final String PASSWORD = "";
     public Connection connect = null;
     public boolean is_tables_created;
-
+    public int user_connected;
     public MainConnection(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -83,7 +83,12 @@ public class MainConnection {
 
                 ResultSet res = statement.executeQuery();
 
-                return res.next();
+                if(res.next()){
+                    user_connected = res.getInt("id");
+                    System.out.println(user_connected);
+                    return true;
+                }
+                return false;
 
             }catch (SQLException e){
                 e.printStackTrace();
@@ -91,6 +96,29 @@ public class MainConnection {
             }
         }
         return false;
+    }
+
+    public int addBook(String BOOKNAME, String BOOKAUTHOR, String BOOKPAGES){
+        if(connect == null){
+            return 1;
+        }
+        if(!is_tables_created){
+            return 2;
+        }
+
+        try(PreparedStatement statement = connect.prepareStatement(
+                "INSERT INTO books (userid, book_name, book_author, book_pages) VALUES (?, ?, ?, ?)"
+        )){
+            statement.setInt(1, user_connected);
+            statement.setString(2, BOOKNAME);
+            statement.setString(3, BOOKAUTHOR);
+            statement.setString(4, BOOKPAGES);
+            statement.executeUpdate();
+            return 0;
+        }catch(SQLException e){
+            e.printStackTrace();
+            return 2;
+        }
     }
 
 }
