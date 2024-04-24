@@ -27,15 +27,15 @@
                     <TextField fx:id="bookNameField" text="Sample Book" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                     <TextField fx:id="bookAuthorField" text="Sample Author" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                     <TextField fx:id="bookPagesField" text="300" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-               <columnConstraints>
-                  <ColumnConstraints />
-                  <ColumnConstraints />
-                  <ColumnConstraints />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints />
-                  <RowConstraints />
-               </rowConstraints>
+                    <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                    </rowConstraints>
                 </GridPane>
             </children>
         </VBox>
@@ -44,31 +44,31 @@
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="482.0">
                     <VBox fx:id="libraryContainer" prefWidth="484.0" spacing="10" style="-fx-padding: 10;">
-                      <HBox alignment="CENTER" fillHeight="true" spacing="10">
-                         <children>
-                            <Label style="-fx-min-width: 220;" text="Jujutsu Kaisen" />
-                            <Label style="-fx-min-width: 100;" text="Fynn Geralt" />
-                            <Label style="-fx-min-width: 50;" text="399" />
-                            <Button fx:id="deleteButton1" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete" />
-                         </children>
-                      </HBox>
-                      <HBox alignment="CENTER" fillHeight="true" spacing="10">
-                         <children>
-                            <Label style="-fx-min-width: 220;" text="Tomb Raider" />
-                            <Label style="-fx-min-width: 100;" text="Santa Clause" />
-                            <Label style="-fx-min-width: 50;" text="3992" />
-                            <Button fx:id="deleteButton2" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete" />
-                         </children>
-                      </HBox>
+                        <HBox alignment="CENTER" fillHeight="true" spacing="10">
+                            <children>
+                                <Label style="-fx-min-width: 220;" text="Jujutsu Kaisen" />
+                                <Label style="-fx-min-width: 100;" text="Fynn Geralt" />
+                                <Label style="-fx-min-width: 50;" text="399" />
+                                <Button fx:id="deleteButton1" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" fillHeight="true" spacing="10">
+                            <children>
+                                <Label style="-fx-min-width: 220;" text="Tomb Raider" />
+                                <Label style="-fx-min-width: 100;" text="Santa Clause" />
+                                <Label style="-fx-min-width: 50;" text="3992" />
+                                <Button fx:id="deleteButton2" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete" />
+                            </children>
+                        </HBox>
                         <!-- Add more HBox rows as necessary -->
                     </VBox>
                 </AnchorPane>
             </content>
         </ScrollPane>
 
-          <!-- Add Book Button -->
-          <Button onAction="#doAddBook" fx:id="addBookButton" layoutX="265.0" layoutY="146.0" style="-fx-background-color: #007ACC; -fx-text-fill: white;" text="Add Book" />
-      <Button fx:id="logoutFromMain" layoutX="496.0" layoutY="37.0" onAction="#onLoginRedirectClick" style="-fx-background-color: brown; -fx-text-fill: white;" text="Log Out" />
-          <Label layoutX="211.0" layoutY="30.0" style="-fx-font-size: 32; -fx-font-weight: bold;" text="Book Tracker" />
+        <!-- Add Book Button -->
+        <Button onAction="#doAddBook" fx:id="addBookButton" layoutX="265.0" layoutY="146.0" style="-fx-background-color: #007ACC; -fx-text-fill: white;" text="Add Book" />
+        <Button fx:id="logoutFromMain" layoutX="496.0" layoutY="37.0" onAction="#onLoginRedirectClick" style="-fx-background-color: brown; -fx-text-fill: white;" text="Log Out" />
+        <Label layoutX="211.0" layoutY="30.0" style="-fx-font-size: 32; -fx-font-weight: bold;" text="Book Tracker" />
     </children>
 </AnchorPane>

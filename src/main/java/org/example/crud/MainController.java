@@ -150,6 +150,18 @@ public class MainController{
         }
     }
 
+    @FXML
+    protected void onDeleteClick(){
+        String USERNAME = usernameLoginField.getText();
+        String PASSWORD = passwordLoginField.getText();
+        if(connection.deleteAccount(USERNAME, PASSWORD)){
+            System.out.println("Account Successfully Deleted");
+        }
+        else{
+            System.out.println("Account Not Found");
+        }
+    }
+
 
     //SIGNUP PAGE CONTROLLERS
     @FXML

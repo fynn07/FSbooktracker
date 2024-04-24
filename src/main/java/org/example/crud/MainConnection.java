@@ -99,6 +99,34 @@ public class MainConnection {
         return false;
     }
 
+    public boolean deleteAccount(String USERNAME, String PASSWORD){
+        if(connect != null){
+            try (PreparedStatement bookStatement = connect.prepareStatement(
+                    "DELETE FROM books WHERE user_id = (SELECT id FROM accounts WHERE username = ? AND password = ?)"
+            )) {
+                bookStatement.setString(1, USERNAME);
+                bookStatement.setString(2, PASSWORD);
+                bookStatement.executeUpdate();
+            }catch (SQLException e){
+                e.printStackTrace();
+                return false;
+            }
+
+            try(PreparedStatement statement = connect.prepareStatement(
+                    "DELETE FROM accounts WHERE username = ? AND password = ?"
+            )){
+                statement.setString(1, USERNAME);
+                statement.setString(2, PASSWORD);
+                return statement.executeUpdate() >= 1;
+
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+            return false;
+        }
+        return false;
+    }
+
     public int addBook(String BOOKNAME, String BOOKAUTHOR, String BOOKPAGES){
         if(connect == null){
             return 1;

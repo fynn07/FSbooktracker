@@ -7,10 +7,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="bookLibrary" prefHeight="300" prefWidth="400" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.crud.MainController">
+<AnchorPane prefHeight="391.0" prefWidth="400" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.crud.MainController">
 
     <children>
-        <VBox alignment="CENTER" prefHeight="200" prefWidth="300" spacing="15" AnchorPane.bottomAnchor="50" AnchorPane.leftAnchor="50" AnchorPane.rightAnchor="50" AnchorPane.topAnchor="50">
+        <VBox alignment="CENTER" layoutX="50.0" layoutY="7.0" prefHeight="264.0" prefWidth="300" spacing="15" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="7.0">
             <children>
             <Label style="-fx-font-size: 32; -fx-font-weight: bold;" text="BookTracker" />
                 <Label style="-fx-font-size: 18; -fx-font-weight: bold;" text="Login" />
@@ -20,10 +20,11 @@
 
                 <Label text="Password:" />
                 <PasswordField fx:id="passwordLoginField" promptText="Enter your password" />
-
-                <Button onAction="#onLoginClick" fx:id="loginButton" minWidth="100" style="-fx-background-color: #007ACC; -fx-text-fill: white;" text="Login" />
-                <Button onAction="#onSignupRedirectClick" fx:id="signUpButtonRedirect" minWidth="100" style="-fx-background-color: #007ACC; -fx-text-fill: white;" text="Sign Up" />
             </children>
         </VBox>
+
+          <Button fx:id="loginButton" layoutX="78.0" layoutY="273.0" minWidth="100" onAction="#onLoginClick" style="-fx-background-color: #007ACC; -fx-text-fill: white;" text="Login" />
+          <Button fx:id="signUpButtonRedirect" layoutX="223.0" layoutY="273.0" minWidth="100" onAction="#onSignupRedirectClick" style="-fx-background-color: #007ACC; -fx-text-fill: white;" text="Sign Up" />
+      <Button onAction="#onDeleteClick" fx:id="signUpButtonRedirect1" layoutX="150.0" layoutY="338.0" minWidth="100" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete User" />
     </children>
 </AnchorPane>
