@@ -2,12 +2,17 @@ package org.example.crud;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.application.Platform;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -17,7 +22,11 @@ import java.util.List;
 public class MainController{
     //start connection
     MainConnection connection = new MainConnection();
+
     public static int user_connected;
+
+    @FXML
+    private VBox libraryContainer;
 
     //main page text-box fields
     @FXML
@@ -53,8 +62,9 @@ public class MainController{
     @FXML
     protected void executeMainPageRedirect(ActionEvent event) throws Exception{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("main_page.fxml"));
-
         Scene newScene = new Scene(loader.load());
+        MainController controller = loader.getController();
+        controller.handleLibraryDOM();
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(newScene);
     }
@@ -82,10 +92,31 @@ public class MainController{
 
     }
 
+    @FXML
     protected void handleLibraryDOM() {
         List<Book> books = connection.getBooksResults();
+        libraryContainer.getChildren().clear();
         for(Book book : books){
-            System.out.println("Book Name: " + book.getBookName() + " Book Author: " + book.getBookAuthor());
+            HBox hbox = new HBox();
+            hbox.setAlignment(Pos.CENTER);
+            hbox.setSpacing(10);
+
+            // Create Labels and Button
+            Label bookNameLabel = new Label(book.getBookName());
+            bookNameLabel.setStyle("-fx-min-width: 220;");
+
+            Label authorNameLabel = new Label(book.getBookAuthor());
+            authorNameLabel.setStyle("-fx-min-width: 100;");
+
+            Label pageCountLabel = new Label(book.getBookPages());
+            pageCountLabel.setStyle("-fx-min-width: 50;");
+
+            Button deleteButton = new Button("Delete");
+            deleteButton.setId("deleteButton");
+            deleteButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
+
+            hbox.getChildren().addAll(bookNameLabel, authorNameLabel, pageCountLabel, deleteButton);
+            libraryContainer.getChildren().add(hbox);
         }
         return;
     }

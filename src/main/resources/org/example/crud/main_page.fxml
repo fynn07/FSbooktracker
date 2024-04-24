@@ -43,7 +43,7 @@
         <ScrollPane fitToWidth="true" layoutX="51.0" layoutY="184.0" prefHeight="195.0" prefWidth="498.0">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="482.0">
-                    <VBox fx:id="vbox" prefWidth="484.0" spacing="10" style="-fx-padding: 10;">
+                    <VBox fx:id="libraryContainer" prefWidth="484.0" spacing="10" style="-fx-padding: 10;">
                       <HBox alignment="CENTER" fillHeight="true" spacing="10">
                          <children>
                             <Label style="-fx-min-width: 220;" text="Jujutsu Kaisen" />
