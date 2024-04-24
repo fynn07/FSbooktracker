@@ -127,6 +127,23 @@ public class MainConnection {
         return false;
     }
 
+    public boolean changePassword(String USERNAME, String PASSWORD, String NEWPASSWORD){
+        if(connect != null){
+            try(PreparedStatement statement = connect.prepareStatement(
+                    "UPDATE accounts SET password = ? WHERE username = ? AND password = ?"
+            )){
+                statement.setString(1, NEWPASSWORD);
+                statement.setString(2, USERNAME);
+                statement.setString(3, PASSWORD);
+
+                return statement.executeUpdate() >= 1;
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
     public int addBook(String BOOKNAME, String BOOKAUTHOR, String BOOKPAGES){
         if(connect == null){
             return 1;
@@ -161,11 +178,12 @@ public class MainConnection {
                 statement.setString(1, String.valueOf(user_connected));
                 ResultSet res = statement.executeQuery();
                 while(res.next()){
+                    String bookId = res.getString("id");
                     String bookName = res.getString("book_name");
                     String bookAuthor = res.getString("book_author");
                     String bookPages = res.getString("book_pages");
 
-                    Book book = new Book(bookName, bookAuthor, bookPages);
+                    Book book = new Book(bookId, bookName, bookAuthor, bookPages);
                     books.add(book);
                 }
                 return books;
@@ -176,6 +194,21 @@ public class MainConnection {
             }
         }
         return null;
+    }
+
+    public boolean deleteBookinDB(String ID){
+        if(connect != null){
+
+            try(PreparedStatement statement = connect.prepareStatement(
+                    "DELETE FROM books WHERE id = ?"
+            )){
+                statement.setString(1, ID);
+                return statement.executeUpdate() >= 1;
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return false;
     }
 
 }

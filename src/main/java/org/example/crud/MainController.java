@@ -58,6 +58,16 @@ public class MainController{
     @FXML
     private TextField passwordLoginField;
 
+    //update password fields
+    @FXML
+    private TextField changeUsernameField;
+
+    @FXML
+    private TextField changePasswordField;
+
+    @FXML
+    private TextField newPasswordField;
+
     //MAIN PAGE
     @FXML
     protected void executeMainPageRedirect(ActionEvent event) throws Exception{
@@ -93,6 +103,22 @@ public class MainController{
     }
 
     @FXML
+    public void deleteBook(ActionEvent event){
+        Button deleteButton = (Button) event.getSource();
+        HBox hbox = (HBox) deleteButton.getParent();
+        Label bookIDLabel = (Label) hbox.getChildren().getFirst(); // Assuming the bookID label is the first child
+        String bookID = bookIDLabel.getText();
+
+        if(connection.deleteBookinDB(bookID)){
+            System.out.println("Book Deleted");
+        }else{
+            System.out.println("Book Not Deleted");
+        }
+        handleLibraryDOM();
+
+    }
+
+    @FXML
     protected void handleLibraryDOM() {
         List<Book> books = connection.getBooksResults();
         libraryContainer.getChildren().clear();
@@ -102,8 +128,11 @@ public class MainController{
             hbox.setSpacing(10);
 
             // Create Labels and Button
+            Label bookID = new Label(book.getID());
+            bookID.setStyle("-fx-opacity: 0");
+
             Label bookNameLabel = new Label(book.getBookName());
-            bookNameLabel.setStyle("-fx-min-width: 220;");
+            bookNameLabel.setStyle("-fx-min-width: 180;");
 
             Label authorNameLabel = new Label(book.getBookAuthor());
             authorNameLabel.setStyle("-fx-min-width: 100;");
@@ -115,7 +144,11 @@ public class MainController{
             deleteButton.setId("deleteButton");
             deleteButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
 
-            hbox.getChildren().addAll(bookNameLabel, authorNameLabel, pageCountLabel, deleteButton);
+            // Your function implementation here
+            // For example, you can call a method to handle the delete operation
+            deleteButton.setOnAction(this::deleteBook);
+
+            hbox.getChildren().addAll(bookID, bookNameLabel, authorNameLabel, pageCountLabel, deleteButton);
             libraryContainer.getChildren().add(hbox);
         }
         return;
@@ -208,6 +241,22 @@ public class MainController{
         }
         if(status == 3){
             System.out.println("Internal Error");
+        }
+    }
+
+    //change password
+    @FXML
+    protected void onChangePassword(ActionEvent event) throws Exception {
+        String USERNAME = changeUsernameField.getText();
+        String PASSWORD = changePasswordField.getText();
+        String NEWPASSWORD = newPasswordField.getText();
+
+        if(connection.changePassword(USERNAME, PASSWORD, NEWPASSWORD)){
+            System.out.println("Password Successfully Changed");
+            onLoginRedirectClick(event);
+        }
+        else{
+            System.out.println("Account Does not Exist");
         }
     }
 }
