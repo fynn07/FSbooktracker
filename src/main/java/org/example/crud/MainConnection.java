@@ -1,15 +1,17 @@
 package org.example.crud;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainConnection {
     //replace the db in the URL to your database
     public static final String URL = "jdbc:mysql://localhost:3306/java_jdbc_db";
     public static final String USERNAME = "root";
     public static final String PASSWORD = "";
-    public Connection connect = null;
     public boolean is_tables_created;
     public static int user_connected;
+    public Connection connect = null;
     public MainConnection(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -119,6 +121,33 @@ public class MainConnection {
             e.printStackTrace();
             return 2;
         }
+    }
+
+    public List<Book> getBooksResults(){
+        if(connect != null){
+            List<Book> books = new ArrayList<>();
+
+            try(PreparedStatement statement = connect.prepareStatement(
+                    "SELECT * FROM books WHERE user_id = ?"
+            )){
+                statement.setString(1, String.valueOf(user_connected));
+                ResultSet res = statement.executeQuery();
+                while(res.next()){
+                    String bookName = res.getString("book_name");
+                    String bookAuthor = res.getString("book_author");
+                    String bookPages = res.getString("book_pages");
+
+                    Book book = new Book(bookName, bookAuthor, bookPages);
+                    books.add(book);
+                }
+                return books;
+
+            }catch(SQLException e){
+                e.printStackTrace();
+                return null;
+            }
+        }
+        return null;
     }
 
 }

@@ -10,6 +10,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
 
 public class MainController{
     //start connection
@@ -57,7 +60,7 @@ public class MainController{
     }
 
     @FXML
-    protected void doAddBook(){
+    protected void doAddBook() throws SQLException{
         String BOOKNAME = bookNameField.getText();
         String BOOKAUTHOR = bookAuthorField.getText();
         String BOOKPAGES = bookPagesField.getText();
@@ -66,6 +69,7 @@ public class MainController{
         if(status == 0){
             System.out.println("Book Added Successfully");
             //Do FXML DOM MANIPULATION
+            handleLibraryDOM();
         }
         if(status == 1){
             System.out.println("Database Not Connected");
@@ -78,9 +82,12 @@ public class MainController{
 
     }
 
-    @FXML
-    protected void handleLibraryDOM(){
-
+    protected void handleLibraryDOM() {
+        List<Book> books = connection.getBooksResults();
+        for(Book book : books){
+            System.out.println("Book Name: " + book.getBookName() + " Book Author: " + book.getBookAuthor());
+        }
+        return;
     }
 
     //LOGIN PAGE CONTROLLERS
