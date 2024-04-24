@@ -14,6 +14,17 @@ import java.io.IOException;
 public class MainController{
     //start connection
     MainConnection connection = new MainConnection();
+    public static int user_connected;
+
+    //main page text-box fields
+    @FXML
+    private TextField bookNameField;
+
+    @FXML
+    private TextField bookAuthorField;
+
+    @FXML
+    private TextField bookPagesField;
 
     //signup text-box fields
     @FXML
@@ -35,7 +46,7 @@ public class MainController{
     @FXML
     private TextField passwordLoginField;
 
-    //MAIN PAGE REDIRECT
+    //MAIN PAGE
     @FXML
     protected void executeMainPageRedirect(ActionEvent event) throws Exception{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("main_page.fxml"));
@@ -43,6 +54,33 @@ public class MainController{
         Scene newScene = new Scene(loader.load());
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.setScene(newScene);
+    }
+
+    @FXML
+    protected void doAddBook(){
+        String BOOKNAME = bookNameField.getText();
+        String BOOKAUTHOR = bookAuthorField.getText();
+        String BOOKPAGES = bookPagesField.getText();
+
+        int status = connection.addBook(BOOKNAME, BOOKAUTHOR, BOOKPAGES);
+        if(status == 0){
+            System.out.println("Book Added Successfully");
+            //Do FXML DOM MANIPULATION
+        }
+        if(status == 1){
+            System.out.println("Database Not Connected");
+        }
+        if(status == 2){
+            System.out.println("Internal Error");
+        }
+
+        return;
+
+    }
+
+    @FXML
+    protected void handleLibraryDOM(){
+
     }
 
     //LOGIN PAGE CONTROLLERS

@@ -9,7 +9,7 @@ public class MainConnection {
     public static final String PASSWORD = "";
     public Connection connect = null;
     public boolean is_tables_created;
-    public int user_connected;
+    public static int user_connected;
     public MainConnection(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -33,7 +33,7 @@ public class MainConnection {
                     "user_id INT," +
                     "book_name VARCHAR(100) NOT NULL," +
                     "book_author VARCHAR(100) NOT NULL," +
-                    "book_pages INT NOT NULL," +
+                    "book_pages VARCHAR(10) NOT NULL," +
                     "FOREIGN KEY(user_id) REFERENCES accounts(id))";
 
             try{
@@ -85,7 +85,6 @@ public class MainConnection {
 
                 if(res.next()){
                     user_connected = res.getInt("id");
-                    System.out.println(user_connected);
                     return true;
                 }
                 return false;
@@ -105,9 +104,10 @@ public class MainConnection {
         if(!is_tables_created){
             return 2;
         }
+        int i = 1;
 
         try(PreparedStatement statement = connect.prepareStatement(
-                "INSERT INTO books (userid, book_name, book_author, book_pages) VALUES (?, ?, ?, ?)"
+                "INSERT INTO books (user_id, book_name, book_author, book_pages) VALUES (?, ?, ?, ?)"
         )){
             statement.setInt(1, user_connected);
             statement.setString(2, BOOKNAME);

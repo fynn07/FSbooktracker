@@ -24,9 +24,9 @@
                     <Label text="Pages" GridPane.columnIndex="2" GridPane.rowIndex="0" />
 
                     <!-- Template Row -->
-                    <TextField text="Sample Book" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                    <TextField text="Sample Author" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                    <TextField text="300" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                    <TextField fx:id="bookNameField" text="Sample Book" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <TextField fx:id="bookAuthorField" text="Sample Author" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <TextField fx:id="bookPagesField" text="300" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                <columnConstraints>
                   <ColumnConstraints />
                   <ColumnConstraints />
@@ -67,7 +67,7 @@
         </ScrollPane>
 
           <!-- Add Book Button -->
-          <Button fx:id="addBookButton" layoutX="265.0" layoutY="146.0" style="-fx-background-color: #007ACC; -fx-text-fill: white;" text="Add Book" />
+          <Button onAction="#doAddBook" fx:id="addBookButton" layoutX="265.0" layoutY="146.0" style="-fx-background-color: #007ACC; -fx-text-fill: white;" text="Add Book" />
       <Button fx:id="logoutFromMain" layoutX="496.0" layoutY="37.0" onAction="#onLoginRedirectClick" style="-fx-background-color: brown; -fx-text-fill: white;" text="Log Out" />
           <Label layoutX="211.0" layoutY="30.0" style="-fx-font-size: 32; -fx-font-weight: bold;" text="Book Tracker" />
     </children>
