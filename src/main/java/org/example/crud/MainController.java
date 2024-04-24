@@ -131,6 +131,16 @@ public class MainController{
         currentStage.setScene(newScene);
 
     }
+    @FXML
+    protected void onForgetRedirectClick(ActionEvent event) throws Exception{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("change_password.fxml"));
+        Scene newScene = new Scene(loader.load());
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        currentStage.setScene(newScene);
+
+    }
+
+
 
     @FXML
     protected void onLoginClick(ActionEvent event){

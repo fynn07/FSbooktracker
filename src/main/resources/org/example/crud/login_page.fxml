@@ -25,6 +25,7 @@
 
           <Button fx:id="loginButton" layoutX="78.0" layoutY="273.0" minWidth="100" onAction="#onLoginClick" style="-fx-background-color: #007ACC; -fx-text-fill: white;" text="Login" />
           <Button fx:id="signUpButtonRedirect" layoutX="223.0" layoutY="273.0" minWidth="100" onAction="#onSignupRedirectClick" style="-fx-background-color: #007ACC; -fx-text-fill: white;" text="Sign Up" />
-      <Button onAction="#onDeleteClick" fx:id="signUpButtonRedirect1" layoutX="150.0" layoutY="338.0" minWidth="100" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete User" />
+      <Button fx:id="signUpButtonRedirect1" layoutX="78.0" layoutY="325.0" minWidth="100" onAction="#onDeleteClick" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete User" />
+      <Button fx:id="forgetButtonRedirect" layoutX="215.0" layoutY="325.0" minWidth="100" onAction="#onForgetRedirectClick" style="-fx-background-color: orange; -fx-text-fill: white;" text="Change Password" />
     </children>
 </AnchorPane>
